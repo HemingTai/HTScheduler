@@ -10,7 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HTScheduler : UIViewController
+@interface HTScheduler : NSObject
+
++ (instancetype)sharedScheduler;
+
+- (id)performActionWithUrl:(NSURL *)url completion:(void(^)(NSDictionary *info))completion;
+
+- (id)performTarget:(NSString *)targetName action:(NSString *)actionName params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
+
+- (void)releaseCachedTargetWithTargetName:(NSString *)targetName;
 
 @end
 
