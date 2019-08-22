@@ -37,7 +37,8 @@
     }
     
     NSString *actionName = [url.path stringByReplacingOccurrencesOfString:@"/" withString:@""];
-    if ([actionName hasPrefix:@"native"]) {
+    //这里用来拦截远程URL非法调用原生方法
+    if ([actionName hasPrefix:@"Action"]) {
         return @(NO);
     }
     
